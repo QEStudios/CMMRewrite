@@ -23,7 +23,7 @@ func init() {
 
 	discord, err = discordgo.New("Bot " + Token)
 	if err != nil {
-		log.Fatalf("Could not login: %s", err)
+		log.Fatalf("Could not login: %v", err)
 	}
 }
 
@@ -54,12 +54,12 @@ func main() {
 
 	_, err := discord.ApplicationCommandBulkOverwrite(App, Guild, commandDefs)
 	if err != nil {
-		log.Fatalf("Could not register commands: %s", err)
+		log.Fatalf("Could not register commands: %v", err)
 	}
 
 	err = discord.Open()
 	if err != nil {
-		log.Fatalf("Could not open session: %s", err)
+		log.Fatalf("Could not open session: %v", err)
 	}
 
 	sigch := make(chan os.Signal, 1)
@@ -68,6 +68,6 @@ func main() {
 
 	err = discord.Close()
 	if err != nil {
-		log.Printf("Could not gracefully close session: %s", err)
+		log.Printf("Could not gracefully close session: %v", err)
 	}
 }
