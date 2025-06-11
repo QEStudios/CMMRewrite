@@ -32,11 +32,13 @@ var (
 	commandDefs = []*discordgo.ApplicationCommand{
 		&commands.PingCommand,
 		&commands.GetUserCommand,
+		&commands.UwuifyCommand,
 	}
 
 	commandHandlers = map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate, opts util.OptionMap){
 		"ping":    commands.PingHandler,
 		"getuser": commands.GetUserHandler,
+		"uwuify":  commands.UwuifyHandler,
 	}
 )
 
