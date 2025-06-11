@@ -31,10 +31,12 @@ func init() {
 var (
 	commandDefs = []*discordgo.ApplicationCommand{
 		&commands.PingCommand,
+		&commands.GetUserCommand,
 	}
 
 	commandHandlers = map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate, opts util.OptionMap){
-		"ping": commands.PingHandler,
+		"ping":    commands.PingHandler,
+		"getuser": commands.GetUserHandler,
 	}
 )
 
