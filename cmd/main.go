@@ -6,6 +6,7 @@ import (
 	"os/signal"
 
 	"github.com/QEStudios/CMMRewrite/commands"
+	"github.com/QEStudios/CMMRewrite/util"
 	"github.com/bwmarrin/discordgo"
 	"github.com/lpernett/godotenv"
 )
@@ -32,7 +33,7 @@ var (
 		&commands.PingCommand,
 	}
 
-	commandHandlers = map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate){
+	commandHandlers = map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate, opts util.OptionMap){
 		"ping": commands.PingHandler,
 	}
 )
@@ -49,7 +50,7 @@ func main() {
 		}
 
 		data := i.ApplicationCommandData()
-		commandHandlers[data.Name](s, i)
+		commandHandlers[data.Name](s, i, util.ParseOptions(data.Options))
 	})
 
 	_, err := discord.ApplicationCommandBulkOverwrite(App, Guild, commandDefs)
