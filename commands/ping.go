@@ -2,12 +2,12 @@ package commands
 
 import "github.com/bwmarrin/discordgo"
 
-var PingDef = discordgo.ApplicationCommand{
+var PingCommand = discordgo.ApplicationCommand{
 	Name:        "ping",
 	Description: "Responds with pong",
 }
 
-func HandlePing(s *discordgo.Session, i *discordgo.InteractionCreate) {
+func PingHandler(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
 		Type: discordgo.InteractionResponseChannelMessageWithSource,
 		Data: &discordgo.InteractionResponseData{

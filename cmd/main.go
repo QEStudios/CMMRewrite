@@ -29,11 +29,11 @@ func init() {
 
 var (
 	commandDefs = []*discordgo.ApplicationCommand{
-		&commands.PingDef,
+		&commands.PingCommand,
 	}
 
 	commandHandlers = map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate){
-		"ping": commands.HandlePing,
+		"ping": commands.PingHandler,
 	}
 )
 
